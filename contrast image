@@ -1,0 +1,15 @@
+grayImage = imread('peppers.png');
+doubleGrayImage = double(grayImage);
+minIntensity = min(doubleGrayImage(:));
+maxIntensity = max(doubleGrayImage(:));
+new_min = 0;
+new_max = 255;
+contrastStretchedImage = uint8(((doubleGrayImage - minIntensity) / ...
+                              (maxIntensity - minIntensity)) * ...
+                              (new_max - new_min) + new_min);
+subplot(1, 2, 1);
+imshow(grayImage);
+title('Original Image');
+subplot(1, 2, 2);
+imshow(contrastStretchedImage);
+title('Contrast Stretched Image');
