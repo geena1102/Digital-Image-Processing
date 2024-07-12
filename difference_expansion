@@ -1,0 +1,21 @@
+a = imread('cameraman.tif');
+b = a;
+c = randi([0, 1], 256, 256, 'uint8');
+for i = 1:256
+ for j = 1:255
+ x = double(b(i, j));
+ y = double(b(i, j + 1));
+ d = x - y;
+ m = floor((x + y) / 2);
+ d = floor(d / 2) * 2 + c(i, j);
+ b(i, j) = uint8(m + floor(d / 2));
+ b(i, j + 1) = uint8(m - floor(d / 2));
+ end
+end
+figure;
+subplot(1, 2, 1);
+imshow(a);
+title('Original Image');
+subplot(1, 2, 2);
+imshow(b);
+title('Difference Expansion Image');
