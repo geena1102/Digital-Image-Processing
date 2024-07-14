@@ -1,0 +1,17 @@
+i=imread('pout.tif')
+subplot(2,2,1)
+imshow(i)
+title("Orginal image")
+
+subplot(2,2,2)
+imhist(i)
+title("hist of orginal img")
+
+j=histeq(i)
+subplot(2,2,3)
+imshow(j)
+title("Equaliized image")
+
+subplot(2,2,4)
+imhist(j)
+title("histogram of equalized image")
