@@ -1,0 +1,22 @@
+subplot(3,1,1)
+a=imread('cameraman.tif')
+imshow(a)
+title('picture')
+subplot(3,1,2)
+imhist(a)
+title('histogram using built in function')
+[counts, binEdges] = imhist(a);
+bar(binEdges, counts, 'hist')
+xlim([0 255]) 
+b=a
+z = zeros(1,256)
+for i = 1:numel(a)
+    pixel_value = a(i);
+    z(pixel_value + 1) = z(pixel_value + 1) + 1;
+end
+title('histogram using  function')
+subplot(3,1,3)
+bar(z)
+xlim([0 255]) 
+bar(z)
+title("Manual histogram")
